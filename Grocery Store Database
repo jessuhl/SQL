@@ -1,0 +1,29 @@
+--Create a grocery store database.
+
+CREATE TABLE grocery (id INTEGER PRIMARY KEY, name TEXT, department TEXT, price INTEGER, stock INTEGER);
+
+INSERT INTO grocery VALUES (1, "banana", "produce", 0.49, 37);
+INSERT INTO grocery VALUES (2, "milk", "dairy", 3.49, 15);
+INSERT INTO grocery VALUES (3, "cereal", "breakfast", 4.59, 7);
+INSERT INTO grocery VALUES (4, "apple", "produce", 1.29, 45);
+INSERT INTO grocery VALUES (5, "avocado", "produce", 2.10, 23);
+INSERT INTO grocery VALUES (6, "chicken breast", "meat", 9.95, 9);
+INSERT INTO grocery VALUES (7, "swiss cheese", "dairy", 3.99, 11);
+INSERT INTO grocery VALUES (8, "pancake mix", "breakfast", 5.99, 6);
+INSERT INTO grocery VALUES (9, "sour cream", "dairy", 3.49, 13);
+INSERT INTO grocery VALUES (10, "italian sausage", "meat", 11.99, 4);
+INSERT INTO grocery VALUES (11, "chips", "snacks", 4.95, 21);
+INSERT INTO grocery VALUES (12, "cookies", "snacks", 3.59, 13);
+INSERT INTO grocery VALUES (13, "bell peppers", "produce", 2.19, 22);
+INSERT INTO grocery VALUES (14, "pretzels", "snacks", 4.99, 9);
+INSERT INTO grocery VALUES (15, "salami", "meat", 13.95, 6);
+
+--Display database ordered by price of item.
+SELECT * FROM grocery ORDER BY price;
+
+--What is the average price of the items in the meat department?
+SELECT ROUND(AVG(price), 2) AS average_price  FROM grocery WHERE department = "meat";
+
+--What 5 items are the lowest in stock?
+SELECT name, price, stock FROM grocery ORDER BY stock LIMIT 5;
+
