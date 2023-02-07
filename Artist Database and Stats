@@ -1,0 +1,40 @@
+/* Create a table of various musical artists and their respective genre /*
+CREATE TABLE singers (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, genre TEXT);
+
+INSERT INTO singers (name, genre) VALUES ("Harry Styles", "pop");
+INSERT INTO singers (name, genre) VALUES ("Noah Kahan", "folk");
+INSERT INTO singers (name, genre) VALUES ("Vance Joy", "indie");
+INSERT INTO singers (name, genre) VALUES ("Taylor Swift", "pop");
+INSERT INTO singers (name, genre) VALUES ("Blake Rose", "pop");
+INSERT INTO singers (name, genre) VALUES ("Maggie Rogers", "indie");
+INSERT INTO singers (name, genre) VALUES ("Olivia Rodrigo", "pop");
+INSERT INTO singers (name, genre) VALUES ("Billie Eilish", "pop");
+INSERT INTO singers (name, genre) VALUES ("Quinn XCII", "pop");
+INSERT INTO singers (name, genre) VALUES ("Ed Sheeran", "pop");
+
+/* Create table identifying where each artist is originally from. /*
+CREATE TABLE home_country (id INTEGER PRIMARY KEY AUTOINCREMENT, artist INTEGER, country TEXT);
+
+INSERT INTO home_country (artist, country) VALUES (1, "UK");
+INSERT INTO home_country (artist, country) VALUES (2, "USA");
+INSERT INTO home_country (artist, country) VALUES (3, "Australia");
+INSERT INTO home_country (artist, country) VALUES (4, "USA");
+INSERT INTO home_country (artist, country) VALUES (5, "Australia");
+INSERT INTO home_country (artist, country) VALUES (6, "USA");
+INSERT INTO home_country (artist, country) VALUES (7, "USA");
+INSERT INTO home_country (artist, country) VALUES (8, "USA");
+INSERT INTO home_country (artist, country) VALUES (9, "USA");
+INSERT INTO home_country (artist, country) VALUES (10, "UK");
+
+/* Create table of artists who have collaborated on records in the past. /*
+CREATE TABLE collaborations (id INTEGER PRIMARY KEY AUTOINCREMENT, person1 INTEGER, person2 INTEGER);
+
+INSERT INTO collaborations (person1, person2) VALUES (2, 9);
+INSERT INTO collaborations (person1, person2) VALUES (4, 10);
+
+
+/* Execute relational queries from above tables. /*
+SELECT a.name, b.name FROM collaborations JOIN singers a ON a.id = collaborations.person1 JOIN singers b ON b.id = collaborations.person2; 
+
+SELECT singers.name, home_country.country FROM home_country JOIN singers ON singers.id = home_country.artist;
+SELECT * FROM home_country;
