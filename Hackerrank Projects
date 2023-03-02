@@ -1,0 +1,81 @@
+#In this SQL, I am completing projects found on Hackerrank.com.
+
+#1. Query all columns for all American cities in the CITY table with populations larger than 100000.
+SELECT * 
+FROM city 
+WHERE population > 100000 
+AND countrycode = 'USA';
+
+#2. Query the NAME field for all American cities in the CITY table with populations larger than 120000. 
+SELECT name 
+FROM city 
+WHERE population > 120000
+AND countrycode = 'USA';
+
+#3. Query all columns for a city in CITY with the ID 1661.
+SELECT * 
+FROM city
+WHERE id = 1661;
+
+#4. Query a list of CITY names from STATION for cities that have an even ID number.
+SELECT DISTINCT(city)
+FROM station 
+WHERE MOD(id,2)=0
+ORDER BY city ASC;
+
+#5. Find the difference between the total number of CITY entries in the table and the number of distinct CITY entries in the table.
+SELECT COUNT(*)-COUNT(DISTINCT(CITY))
+FROM station;
+
+#6. Query the Name of any student in STUDENTS who scored higher than  Marks. Order your output by the last three characters of each name. If two or more students both have names ending in the same last three characters, secondary sort them by ascending ID.
+SELECT name 
+FROM students
+WHERE marks > 75
+ORDER BY SUBSTR(name, -3, 3) ASC, id ASC;
+
+#7. Write a query that prints a list of employee names (i.e.: the name attribute) for employees in Employee having a salary greater than  per month who have been employees for less than  months. Sort your result by ascending employee_id.
+SELECT name
+FROM employee
+WHERE salary > 2000
+AND months < 10
+ORDER BY employee_id ASC;
+
+#8. Query the sum of the populations for all Japanese cities in CITY.
+SELECT SUM(population)
+FROM city 
+WHERE countrycode = 'JPN';
+
+#9. Query the average population for all cities in CITY, rounded down to the nearest integer.
+SELECT ROUND(AVG(population),0) AS average_population
+FROM city;
+
+#10. Query the difference between the maximum and minimum populations in CITY.
+SELECT MAX(population) - MIN(population)
+FROM city;
+
+#11. Query the two cities in STATION with the shortest and longest CITY names, as well as their respective lengths (i.e.: number of characters in the name).
+SELECT MIN(city), MAX(length(city))
+FROM station
+WHERE length(city) = (
+    SELECT MIN(LENGTH(city)) 
+    FROM station)
+UNION
+SELECT MIN(city), MAX(LENGTH(city))
+FROM station 
+WHERE length(city) = (
+    SELECT MAX(LENGTH(city))
+    FROM station)
+   
+#12. Query the list of CITY names from STATION which have vowels (i.e., a, e, i, o, and u) as both their first and last characters. Your result cannot contain duplicates.
+SELECT DISTINCT(city)
+FROM station
+WHERE SUBSTR(city, 1, 1) IN ('a', 'e', 'i', 'o', 'u') 
+AND SUBSTR(city, -1, 1) IN ('a', 'e', 'i', 'o', 'u')
+ORDER BY city ASC;
+
+#13. Query the list of CITY names from STATION that either do not start with vowels or do not end with vowels. Your result cannot contain duplicates.
+SELECT DISTINCT(city)
+FROM station 
+WHERE SUBSTR(city, 1, 1) NOT IN ('a', 'e', 'i', 'o', 'u')
+OR SUBSTR(city, -1, 1) NOT IN ('a', 'e', 'i', 'o', 'u')
+ORDER BY city ASC;
