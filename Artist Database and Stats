@@ -3,10 +3,10 @@ CREATE TABLE singers (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, genre TEX
 
 INSERT INTO singers (name, genre) VALUES ("Harry Styles", "pop");
 INSERT INTO singers (name, genre) VALUES ("Noah Kahan", "folk");
-INSERT INTO singers (name, genre) VALUES ("Vance Joy", "indie");
+INSERT INTO singers (name, genre) VALUES ("Vance Joy", "alternative");
 INSERT INTO singers (name, genre) VALUES ("Taylor Swift", "pop");
 INSERT INTO singers (name, genre) VALUES ("Blake Rose", "pop");
-INSERT INTO singers (name, genre) VALUES ("Maggie Rogers", "indie");
+INSERT INTO singers (name, genre) VALUES ("Maggie Rogers", "alternative");
 INSERT INTO singers (name, genre) VALUES ("Olivia Rodrigo", "pop");
 INSERT INTO singers (name, genre) VALUES ("Billie Eilish", "pop");
 INSERT INTO singers (name, genre) VALUES ("Quinn XCII", "pop");
