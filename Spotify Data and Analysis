@@ -56,5 +56,16 @@ WHERE duration_ms IN (
     FROM BIT_DB.Spotifydata
     );
 
+#Next, I used a CTE to tag artists with an average popularity score of at least 90 as being a 'Top Star'. 
+WITH popularity_avg_cte AS (
+    SELECT artist_name, 
+    AVG(popularity) AS avg_popularity
+    FROM Spotifydata
+    GROUP BY artist_name
+)
+SELECT artist_name, avg_popularity, 'Top Star' AS tag
+FROM popularity_avg_cte
+WHERE avg_popularity >= 90;
+
 
 
